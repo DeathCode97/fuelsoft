@@ -1,0 +1,53 @@
+/* Ocupar toda la altura y ancho de la ventana */
+.sidenav-container {
+  height: 100vh;
+  background-color: #f4f6f9;
+}
+
+/* Estilos del Sidebar lateral */
+.sidenav {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+}
+
+.sidebar-header {
+  padding: 20px 16px;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Estilos de la barra superior */
+.top-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.toolbar-title {
+  margin-left: 10px;
+}
+
+/* IMPORTANTE: Espaciador flexible que empuja los iconos al extremo derecho */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Espacio interno para el contenido de tus páginas */
+.main-body-content {
+  padding: 24px;
+}
+
+/* Adaptación para pantallas móviles */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 240px;
+  }
+}

@@ -1,0 +1,64 @@
+<mat-sidenav-container class="sidenav-container">
+  
+  <!-- BARRA LATERAL (SIDEBAR DE LISTA) -->
+  <mat-sidenav #drawer mode="side" opened class="sidenav">
+    <div class="sidebar-header">
+      <h3>FUELSOFT</h3>
+    </div>
+
+    <!-- Lista de opciones del menú -->
+    <mat-nav-list>
+      <a mat-list-item routerLink="/inicio" (click)="drawer.toggle()">
+        <mat-icon matListItemIcon>home</mat-icon>
+        <span matListItemTitle>Inicio</span>
+      </a>
+
+      <a mat-list-item routerLink="/usuarios" (click)="drawer.toggle()">
+        <mat-icon matListItemIcon>people</mat-icon>
+        <span matListItemTitle>Usuarios</span>
+      </a>
+
+      <a mat-list-item routerLink="/etl" (click)="drawer.toggle()">
+        <mat-icon matListItemIcon>sync_alt</mat-icon>
+        <span matListItemTitle>Proceso ETL</span>
+      </a>
+
+      <a mat-list-item routerLink="/acerca" (click)="drawer.toggle()">
+        <mat-icon matListItemIcon>info</mat-icon>
+        <span matListItemTitle>Acerca de</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <mat-sidenav-content class="sidenav-content">
+    
+    <!-- Barra Superior fija con iconos a la derecha -->
+    <mat-toolbar color="primary" class="top-toolbar">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="toolbar-title"></span>
+
+      <!-- Espaciador flexible para empujar todo lo siguiente a la derecha -->
+      <span class="spacer"></span>
+
+      <!-- Botón de Notificaciones -->
+      <button mat-icon-button title="Notificaciones">
+        <mat-icon>notifications</mat-icon>
+      </button>
+
+      <!-- Botón de Perfil / Editar Usuario -->
+      <button mat-icon-button routerLink="/perfil" title="Editar Perfil">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Aquí se cargarán tus vistas mediante el enrutador -->
+    <div class="main-body-content">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
