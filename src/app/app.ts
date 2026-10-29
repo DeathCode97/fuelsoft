@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from './modulos/navbar/navbar';
+import { Globalspinner } from './globalspinner/globalspinner';
+// import { Navbar } from './modulos/navbar/navbar';
 
 @Component({
-  imports: [RouterOutlet, Navbar],
+  imports: [RouterOutlet, Globalspinner],
   selector: 'app-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

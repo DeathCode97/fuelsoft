@@ -1,2 +1,58 @@
-<!-- <p>inicio-sesion works!</p> -->
- <button mat-flat-button>¡Hola Material!</button>
+<div class="login-container">
+  <mat-card class="login-card">
+    <!-- Header -->
+    <div class="login-header">
+      <div class="logo-placeholder">
+        <mat-icon class="app-logo">lock_person</mat-icon>
+      </div>
+      <mat-card-title>Bienvenido</mat-card-title>
+      <mat-card-subtitle>Ingrese sus credenciales para acceder</mat-card-subtitle>
+    </div>
+
+    <!-- Formulario -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Usuario o Correo -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Usuario o Correo Electrónico</mat-label>
+        <input matInput formControlName="username" type="text" autocomplete="username">
+        <mat-icon matSuffix>person</mat-icon>
+        @if (loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched) {
+          <mat-error>El usuario es obligatorio</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Contraseña -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput formControlName="password" [type]="hidePassword() ? 'password' : 'text'" autocomplete="current-password">
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="'Ocultar contraseña'" [attr.aria-pressed]="hidePassword()">
+          <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        @if (loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched) {
+          <mat-error>La contraseña es obligatoria</mat-error>
+        }
+      </mat-form-field>
+
+      <!-- Acciones adicionales (Recordarme / Olvidé contraseña) -->
+      <div class="form-actions-row">
+        <mat-checkbox formControlName="rememberMe">Recordarme</mat-checkbox>
+        <button type="button" class="text-button" (click)="onForgotPassword()">¿Olvidaste tu contraseña?</button>
+      </div>
+
+      <!-- Botón de Envío -->
+      <button mat-flat-button color="primary" type="submit" class="submit-button" [disabled]="isLoading()">
+        Ingresar al Sistema
+      </button>
+
+    </form>
+  </mat-card>
+</div>
+
+<!-- Spinner de pantalla completa (Overlay) -->
+<!-- @if (isLoading()) {
+  <div class="loading-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
+    <span class="loading-text">Iniciando sesión, por favor espere...</span>
+  </div>
+} -->
